@@ -1,4 +1,3 @@
-d
 \documentclass[preprint,3p, 11pt,authoryear]{elsarticle}
 
 
@@ -20,7 +19,7 @@ d
 \usepackage{setspace}
 \usepackage{adjustbox}
 \usepackage{xcolor}
-
+\usepackage[utf8]{inputenc}
 
 \journal{Nondestructive Testing and Evaluation}
 
@@ -83,6 +82,18 @@ Acoustic emissions, absolutely calibrated sensors, active source time function, 
 \end{figure}
 
 \subsection{Material properties}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \subsection{Elsys Instruments High-voltage Multiplexer}
@@ -164,31 +175,48 @@ F^{*}_{j}\left( \mathbf{\xi}, \hat{\omega} \right) & =
 \end{split}
 \end{equation}
 
-\noindent To solve the features about $F^{*}_{j}$, we will need to \textit{a priori} knowledge of sensors instrument response, also needed will be signal measurements $S$ and the true Green's function $G_{kj}$ but we will still not know the frequency-dependent scaling function $K(\hat{\omega})$.
+\noindent To solve the features about $F^{*}_{j}$, we will need to \textit{a priori} knowledge of sensors instrument response, also needed will be signal measurements $S$ and the true Green's function $G_{kj}$ but we will still not know the frequency-dependent scaling function $K(\hat{\omega})$ -- a primary calculation that is required to obtain the true force-time function produced by the active PZT transducer.
 
+\section{Results}
+\label{results}
 
-
+In Figure \ref{fig3}(a) we show measurements on all passive sensors PZT sensors depicted in Figure \ref{fig1}(b).  Waveforms have been color coded following Figure \ref{fig1}(b) to show measurements taken at similar epicentral distances. These waveform we produced by actively exciting the source sensor located at the top central location of the steel platen. For our analysis, we only the first 50 $\mu$s of signal since we do not want to pollute the data with reflections from the boundary of the platen.  This allows us to analyze the wave using the approximation that the plate is in fact semi-infinite. Under this assumption we are able to solve for the Green's functions using the generalized ray theory code provided by \citet{Hsu1985} and modified for MATLAB by \citet{McLaskey2012}.  Figure \ref{fig3}(b) shows the empirical Green's functions (EGF) at a give epicentral location from the source. We call this the empirical Green's function since it is a numerical approximation of the true Green's function that is the resulting ground displacements $u$ at point $\mathbf{x}$ from a unit impulse function $\delta_{j}(\mathbf{\xi}, \tau)$. In Figure \ref{fig3}(b) we also show the wave phase arrivals (P, S, PPP, PPPPP) for the numerical models.
 
 \begin{figure}[ht]
      	\centering
 \includegraphics[scale= 1.0]{FIG3.pdf} 
-\caption{\textbf{(a)}  }
+\caption{\textbf{(a)} Measurements on from passive PZT transducers from a source produced from the active sensor. The color scheme represents sensors at the different epicentral locations shown in Figure \ref{fig1}(b).  \textbf{(b)} Green's function solutions using generalized ray theory for a semi-infinite elastic, homogeneous steel platen at different epicentral locations.  The empirical Green's function (EGF) is equal to the true Green's function represents the displacements produced from the unit impulse force $\delta_{j}(\tau)$. We see the various phase arrival predicted from the model.}
 	\label{fig3} 
 \end{figure}
+
+Figure \ref{fig4} compares the theoretical Green's function $g_{kj}$ to the measured signals $s$.  We show the sensors A1 (red), A2 (yellow), A3 (green) and A4 (blue) from the epicentral distances of 0 mm, 23 mm, 46 mm and 69 mm, respectively. We see that the sensors appear to capture the multiple phase arrivals and this is believed to be due to the conical nature of the PZT crystal and its ability to capture wave arrivals at high azimuthal incident angles \citep{Selvadurai2019}. Results in Figure \ref{fig4} are representative of the measurements across all 13 passive sensors.
 
 \begin{figure}[ht]
      	\centering
 \includegraphics[scale= 0.90]{FIG4.pdf} 
-\caption{\textbf{(a)}  }
+\caption{Comparison of measurements on sensors A1, A2, A3 and A4 to the emipircal Green's functions calculated using generalized ray theory. The KRNBB sensor perform well and capture the wide range of wave phase arrivals.}
 	\label{fig4} 
 \end{figure}
 
+To best show the approach we take to solve for the force time function produced by the active source, we focus on the measurements taken from sensors A3 at epicentral distance $x$ = 46 mm. Figure \ref{fig5}(a) shows the measurements and EGFs.  We focus on detail B, which looks at the first arrival P wave.  In Figure \ref{fig5}(b) this is shown in more detail with the sensors (green trace) and EGF (black trace) clearly visible.  Since we know that, in the time domain, the signal produced on the sensors the force-time function are convolved with the associated Green's function, the shape of the specific wave with be representative of the source. The blue curve in Figure \ref{fig5}(b) is a best-guess approximation of the source and will be use to estimate the general normalized force-time function $f^{*}_{j}$ from equation \eqref{eq4}.
+
 \begin{figure}[ht]
      	\centering
-\includegraphics[scale= 0.9]{FIG5.pdf} 
-\caption{\textbf{(a)}  }
+\includegraphics[scale= 0.85]{FIG5.pdf} 
+\caption{\textbf{(a)} Measurements from sensor A3 (green line) from the active source compared to the EGFs at the same place from the model.  Detail B looks more closely at the first-arrival P wave. \textbf{(b)} Shows the general shape of the P wave (green line) versus the location of the expected P wave arrival (black line) form the Green's function solution.  From the convolutional nature of the wave propagation problem (equation \eqref{eq1}) we can estimate the general shape of the normalized force-time function $f^{*}_{j}$ shown as the blue line.}
 	\label{fig5} 
 \end{figure}
+
+\textbf{**Use Christensen (1988) to better define the force-time function**} We created the normalized force-time function based on characteristic of the first arrival P wave.  In Figure \ref{fig5}(c) we show the methodology for generating $f^{*}_{j}$.  We based this on the technical specifications of the high-voltage pulsing unit described in Section \ref{XXX}. In this experiment we applied a 100V pulse, which translates into a positive pulse, followed by a delay, then a negative pulse.  We approximated this behavior using piecewise discontinuous step functions (red curve) that was convolved with a 0.6 $\mu$s triangle function to smoothen the step function. This produced the blue curve which matched the general shape of the P wave arrival in Figure \ref{fig5}(c).  We will use this as a forward model to approximate the source-time from the active PZT source. We clearly see that the normalized force-time function varies from [-1,1], which is appropriate for our definition of $f^{*}$ in Section \ref{XXX}.
+
+\begin{figure}[ht]
+     	\centering
+\includegraphics[scale= 0.9]{FIG5b.pdf} 
+\caption{\textbf{(a)}  }
+	\label{fig6} 
+\end{figure}
+
+To solve for the scaling function $K(\hat{\omega})$ we need to know the instrument response function $i(t)$. For this study, we use the results from \citet{Wu2020}. They performed multiple ball drops to create known force-time functions at the same location as the active sensors. The same sensors were used in their study and a series of different ball sizes where used (diameters = 0.3 mm, .....to 1.5 mm).  \citet{Wu2020} modeled long times to also capture how the sensors responded to frequencies as low as $f$ =1 kHz, following the methodology by \citet{Wu2018}.  Figure \ref{fig6}(a) shows the full instrument response function for each sensor in the Fourier domain (see equation \ref{eq5}).  Figure \ref{fig6}(b) focuses only on the results for frequencies between $f$ = 100 kHz to 1000 kHz, which is more important to our understanding of the true force-time function in our case.  
 
 
 \begin{figure}[ht]
@@ -231,12 +259,12 @@ F^{*}_{j}\left( \mathbf{\xi}, \hat{\omega} \right) & =
 
 
 
+
+\clearpage
+
 \section*{Acknowledgement}
-
-
-
-
-
+T. M\"orgeli
+ 
 
 \bibliographystyle{elsarticle-harv} 
 \bibliography{Source_reconstruction}
