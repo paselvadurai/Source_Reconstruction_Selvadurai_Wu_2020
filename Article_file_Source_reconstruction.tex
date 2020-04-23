@@ -35,6 +35,7 @@
  \ead{paul.selvadurai@sed.ethz.ch}
 \author[2]{Rui Wu}
 \author[3]{Claudio Madonna}
+\author[2]{Omid Moradian}
 
 
 
@@ -62,6 +63,12 @@ Acoustic emissions, absolutely calibrated sensors, active source time function, 
 \section{Introduction}
 \label{int}
 
+Understanding wave elastodynamic waves propagate through a medium has proven to have a multitude of applications in many fields of science and engineering.  
+\\
+
+Application in material science (crack detection), biomedics (ultrasonics), \textbf{more?} 
+\\
+The premise is to use well-understood physics associated with wave propagation, in fluids or solids media, to probe properties and assess its state in a non-destructive manner. 
 
 
 \section{Experimental facilities}
@@ -84,9 +91,21 @@ Acoustic emissions, absolutely calibrated sensors, active source time function, 
 \subsection{Material properties}
 
 
-
-
-
+\begin{table}[ht]
+	\centering
+	\caption{Material properties of HABA CK45 steel test platen.}
+	\begin{tabular}{ m{5cm} m{2cm} m{4cm}} 
+		\hline  
+		\bf{Parameter} 			& \bf{Symbol} 		& \bf{Value}	\\
+	    Density                 & $\rho$            & 7850 kg/m$^{3}$\\
+	    Shear modulus           & $\mu$             & 84 GPa \\
+	    Poisson's ratio         & $\nu$             & 0.28\\
+	    P wave velocity         & $V_{P}$           & 5890 m/s\\
+	    S wave velocity         & $V_{S}$           & 3270 m/s\\	    
+		\hline  	
+	\end{tabular}
+	\label{table1}
+\end{table}
 
 
 
@@ -268,6 +287,37 @@ T. M\"orgeli
 
 \bibliographystyle{elsarticle-harv} 
 \bibliography{Source_reconstruction}
+
+
+\section*{Supplemental information}
+
+
+\begin{table}[ht]
+	\centering
+	\caption{Material properties of Piezoelectric active source (PZT-5A).}
+	\begin{tabular}{ m{5cm} m{2cm} m{4cm}} 
+		\hline  
+		\bf{Parameter} 		      & \bf{Symbol} 	  & \bf{Value}	\\
+	   & \textit{Mechanical properties} & \\
+	    Density                   & $\rho$            & 7500 kg/m$^{3}$\\
+	    Poisson's ratio           & $\nu$             & 0.31\\
+	    Young's modulus           & $E$               & 66 GPa\\
+        Curie Point               & $T_{c}$           & 350 $^{o}$C\\  
+        Mechanical quality factor &   $Q_{m}$         & 100\\
+	  & \textit{Piezoelectric constants} & \\
+ 	  & d_{33}                   & 3.74 $\times$ 10$^{-10}$ m/V\\
+ 	  & d_{31}                   & -1.71 $\times$ 10$^{-10}$ m/V\\
+	  & \textit{Dielectric constants} & \\
+ 	  & d_{33}                   & 3.74 $\times$ 10$^{-10}$ m/V\\
+ 	  & d_{31}                   & -1.71 $\times$ 10$^{-10}$ m/V\\
+
+	       
+		\hline  	
+	\end{tabular}
+	\label{table1}
+\end{table}
+
+
 
 \end{document}
 \endinput
