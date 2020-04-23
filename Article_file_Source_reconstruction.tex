@@ -74,6 +74,30 @@ The premise is to use well-understood physics associated with wave propagation, 
 \section{Experimental facilities}
 \subsection{General}
 
+We study elastodynamic waves propagating through an elastic isotropic, homogeneous steel plate. Using an electro-mechanical piezocomposite actuator, deliver impulsive sources on to the top surface of the steel specimen. On the bottom, an array of 13 piezoelectric (lead zirconate titanate, PZT) transducers are mounted in an aluminium array holder. The aim of this study is to better understand the force produced by the piezoelectric actuator by studying the waves produced at different locations on the bottom of the specimen.
+
+Figure \ref{fig1}(a) shows a schematic representations of the steel platen (350 mm $\times$ 350 mm $\times$ 50 mm) in the extruded aluminium frame. Small rummer pads (10 mm $\times$ 10 mm $\times$ 1 mm) are used to base isolate the steel platen from the frame. Centrally located on the top surface is a piezoelectric actuator build in house (details in Section XX).  This sensor is connected to an high-voltage pulsing unit (HVP, Elsys Instruments AE-HV-MUX). This unit consist of a PiezosystemJena voltage amplifier for pulse generation (HVP 1000/200) that is fully integrated with the data acquisition (DAQ) software (Elsys Instruments TraNET). Figure \ref{fig1}(c) shows the circuit diagram of the HPV that is used to deliver an amplified voltage pulse to the piezoelectric actuator. The pulse and discharge of the system is depicted in the Figure \ref{fig1}(d). The time-dependent change in voltage when the switch position is in ``pulse'' (state 1) is given as:
+
+\begin{equation}
+\begin{array}{lcc}
+  V(t) =  V_{0} \cdot \left[ 1 - exp\left(\frac{t}{R_{1}\cdot C_{PZT}} \right) \right], & \text{for} & 0 < t \leq t_{0}\\
+\end{array}
+\label{eq1}
+\end{equation}
+
+\noindent where $C_{PZT}$ = 300 pF, $R_{1}$ = 5 $\Omega$, $V_{0}$ = 200 V and the time of the pulse was set to $t_{0}$ = 1 $\mu$s. Discharging the systems required the switch to move to position 2 and we can solve for the theoretical discharge voltage:
+
+\begin{equation}
+\begin{array}{lclcc}
+  V(t) =  V_{0} \cdot exp\left(-\frac{t - t_{0}}{R_{2}\cdot C_{eq}}\right), & \text{for} & t > t_{0}\\
+\end{array}
+\label{eq2}
+\end{equation}
+
+\noindent where $R_{2}$ = 1000 $\Omega$, $C_{eq}$ is the equivalent capacitance of $C_{PZT}$ and $C_{0}$ in series using electrostatics.
+
+
+
 \begin{figure}[ht]
      	\centering
 \includegraphics[scale= 1.0]{FIG1.pdf} 
