@@ -76,7 +76,7 @@ The premise is to use well-understood physics associated with wave propagation, 
 
 We study elastodynamic waves propagating through an elastic isotropic, homogeneous steel plate. Using an electro-mechanical piezocomposite actuator, deliver impulsive sources on to the top surface of the steel specimen. On the bottom, an array of 13 piezoelectric (lead zirconate titanate, PZT) transducers are mounted in an aluminium array holder. The aim of this study is to better understand the force produced by the piezoelectric actuator by studying the waves produced at different locations on the bottom of the specimen.
 
-Figure \ref{fig1}(a) shows a schematic representations of the steel platen (350 mm $\times$ 350 mm $\times$ 50 mm) in the extruded aluminium frame. Small rummer pads (10 mm $\times$ 10 mm $\times$ 1 mm) are used to base isolate the steel platen from the frame. Centrally located on the top surface is a piezoelectric actuator build in house (details in Section XX).  This sensor is connected to an high-voltage pulsing unit (HVP, Elsys Instruments AE-HV-MUX). This unit consist of a PiezosystemJena voltage amplifier for pulse generation (HVP 1000/200) that is fully integrated with the data acquisition (DAQ) software (Elsys Instruments TraNET). Figure \ref{fig1}(c) shows the circuit diagram of the HPV that is used to deliver an amplified voltage pulse to the piezoelectric actuator. The pulse and discharge of the system is depicted in the Figure \ref{fig1}(d). The time-dependent change in voltage when the switch position is in ``pulse'' (state 1) is given as:
+Figure \ref{fig1}(a) shows a schematic representations of the steel platen (350 mm $\times$ 350 mm $\times$ 50 mm) in the extruded aluminium frame. Small rummer pads (10 mm $\times$ 10 mm $\times$ 1 mm) are used to base isolate the steel platen from the frame. Material properties of the steel plate required to model the wave propagation problem in the steel plate are given in Table \ref{table1}. Centrally located on the top surface is a piezoelectric actuator built in-house.  This sensor is connected to an high-voltage pulsing unit (HVP, Elsys Instruments AE-HV-MUX). This unit consist of a PiezosystemJena voltage amplifier for pulse generation (HVP 1000/200) that is fully integrated with the data acquisition (DAQ) software (Elsys Instruments TraNET). Figure \ref{fig1}(c) shows the circuit diagram of the HPV that is used to deliver an amplified voltage pulse to the piezoelectric actuator. The pulse and discharge of the system is depicted in the Figure \ref{fig1}(d). The time-dependent change in voltage when the switch position is in ``pulse'' (state 1) is given as:
 
 \begin{equation}
 \begin{array}{lcc}
@@ -94,26 +94,16 @@ Figure \ref{fig1}(a) shows a schematic representations of the steel platen (350 
 \label{eq2}
 \end{equation}
 
-\noindent where $R_{2}$ = 1000 $\Omega$, $C_{eq}$ is the equivalent capacitance of $C_{PZT}$ and $C_{0}$ in series using electrostatics.
+\noindent where $R_{2}$ = 1000 $\Omega$, $C_{eq}$ is the equivalent capacitance of $C_{PZT}$ and $C_{0}$ in series using electrostatic theory.  Figure \ref{fig1}(b) show the array holder for the passive sensor (KRNBB-PC) which are used to measure the stress waves produced by the active piezoelectric source. The aluminium array had a 7 $\time$ 7 locations with 23 mm spacing in both the $x$- and $y-$ directions.  In this study, we have assumed our source is symmetric about the $1-3$ and $2-3$ planes (i.e. aligned in the $3$-direction) and, therefore, have focused most of our sensors converge to one quadrant.  Similar colors of the sensors locations in Figure \ref{fig1}(b), represents similar epicentral locations.  We have redundant measurements at all epicentral locations expect $x$ = 0 mm, 33 mm and 96 mm and have shown that there appear to be little to no directivity in the active source.  
 
-
+A total of 13 sensor are used and the spectral characteristics of these sensors have been well examined in the literature using the absolute calibration methods \citep{Glaser1998, McLaskey2010, McLaskey2012, Selvadurai2015, Selvadurai2019, Wu2020}. \citet{Glaser1998} provides a detailed account to sensor attributes used by KRN Services, including a the small field emission transistor (FET)-based Sanyo (2SK715W) preamplifier internal to the sensor casing to improve impedance matching.  These sensors have shown flat displacements-responses between 100 kHz to 1 MHz \citep{McLaskey2012, Selvadurai2019}.  At longer wavelengths between 1 kHz to 50 kHz these sensors have been found to behave more like accelerometer \citep{Wu2020}.
 
 \begin{figure}[ht]
      	\centering
 \includegraphics[scale= 1.0]{FIG1.pdf} 
-\caption{\textbf{(a)}  }
+\caption{\textbf{(a)} General schematic of the calibration station located in the Rock Physics and Mechanics Laboratory at ETH Zurich. We used apparatus to apply an active source downwards, which was centrally located on the top of a steel platen. This produced elastodynamic stress waves that are measured using an array of 13 broadband, passive PZT sensors. \textbf{(b)} The array of PZT sensors are shown where the colors indicate their epicentral location with respect to the source and is used throughout the study. \textbf{(c)} Driver circuit for pulse source diagram showing the elements associated with the Elsys high-voltage pulsing unit (AE-HV-MUX). \textbf{(d)} The solution for the time-dependent pulse and discharge of the voltage applied across the PZT element using circuit theory. }
 	\label{fig1} 
 \end{figure}
-
-\begin{figure}[ht]
-     	\centering
-\includegraphics[scale= 1.0]{FIG2.pdf} 
-\caption{\textbf{(a)}  }
-	\label{fig2} 
-\end{figure}
-
-\subsection{Material properties}
-
 
 \begin{table}[ht]
 	\centering
@@ -133,22 +123,26 @@ Figure \ref{fig1}(a) shows a schematic representations of the steel platen (350 
 
 
 
+\subsection{Lamb's problem and PZT actuators}
 
+The study of spherical waves in an elastic half-space was solved by \citet{Lamb1904} who was interested in the kinematic motions on a surface using the integral of plane waves solutions from \citet{Rayleigh1988}. More specifically, the Lamb's problem focuses on determining the elastic disturbance resulting from a point force in/on a half space. These early studies aimed at understanding phase arrivals and their relationship to earthquake sources in the field of seismology. These seminal investigations have been followed by many hundreds of studies that have use different mathematical approaches to solve the wave equation \citep[e.g. ch 6 in][]{Aki2002}.These studies vary in complexity in the media (in-homogeneous layered, or anisotropic, etc.), to complex source features (double couple, compensated-linear-vector-dipole, etc.) and use a range of different methods to solve (theoretical closed-form solutions, numerical methods, etc.). We adopt the approach presented by \citet{Johnson1974} that derived the complete solution to the three-dimensional Lamb’s problem derived using the Cagniard--de Hoop method. This solution is used to study the mechanical disturbances from sources in an elastic half-space and has been to a numerical generalized ray theory code by \citet{Hsu1985} \citep[see also][]{McLaskey2011, McLaskey2012, Selvadurai2019}.
 
+While more complex sources have been considered to model earthquakes, such as the single and double couple source \citet{Sato1972}, we believe the original problem studied by \citet{Lamb1904} -- elastic displacements resulting from a point force in/on a half space -- is sufficiently complex for capturing the behavior of the piezoelectric actuator depicted in Figure \ref{fig2}(a).  In Figure \ref{fig2}(a) we show cross-section A-A from Figure \ref{fig1}(b). The source is produced by the piezoelectric actuator on the top surface of the steel plate causing elastodynamic spherical stress waves (colored) to propagate outwards. This wave-field is actually only used as a reference and is not representative of the source produced from the PZT actuator (determined later). The colored region in Figure \ref{fig2}(a) represents the velocity wave-field produced from a ball drop at the actuator location, which has been well-studied in recent years \citet{McLaskey2010, Wu2018, Wu2020}. In Figure \ref{fig2}(a), we show the ``toolchain'' that is used to process the seismic waves produced by the PZT actuator. The PZT actuator is used to produce a force $f_{j}\left( \mathbf{\xi}, \tau \right)$ on the top surface at a point $\mathbf{\xi}$ of the steel platen. A passive sensor, on the bottom surface at point $\mathbf{x}$, attempts to measure the theoretical displacements with time $u_{k}\left( \mathbf{x}, t \right)$. Green’s functions are a basic ingredient in the Knopoff--de Hoop representation theorem \citep{Burridge1964} is the solution to the elastic wave equation relating the elastic displacements to the source throughout he elastic half-space. Unfortunately, the passive sensors are unable to truly capture the theoretical displacements and will distort the measured signal $s(t)$ according to its instrument response $i_{k}(t)$.  In this study we consider the instrument response to include effects of the sensor, cabling and internal component of the data acquisition allowing for digitization of the signal. 
 
+\begin{figure}[h]
+     	\centering
+\includegraphics[scale= 1.0]{FIG2.pdf} 
+\caption{Fundamental features related to the Lamb problem that relates elastodynamic displacements in an elastic half-space to a source (force-time) function. The velocity displacement field is shown for reference only and was adopted from \citet{Selvadurai2019}. P and S waves are highlighted for reference only. The PZT actuator is located centrally on the top of the steel plate and passive (recording) sensors are shown below for the Section A-A from Figure \ref{fig1}(b).}
+	\label{fig2} 
+\end{figure}
 
-
-
-\subsection{Elsys Instruments High-voltage Multiplexer}
-***need information on \textbf{Piezosystem Jena HVP1000/100MODext.} from Roman Bertschi***
-
-
+Due to spatial reciprocity of the representation theorem \citep{Aki2002} and the invariant nature of the seismic wave equation to time-reversed solutions \citep{Fink1992}, developing more understanding of realistic force-time function produced by the PZT actuators has many potential benefits. The hope is to adopt techniques that have widely been used in the field of exploration geophysics in novel laboratories acoustic emission studies. To our knowledge, the benefits seen at scale from applications such as \textit{controlled-source interferometry} have not been fully explored in the laboratory with fully calibrated PZT actuator sources. We also see potential benefits when studying changes acoustic transmissivity \citep{PyrakNolte1980} with more accurate and coupled models that the simple linear slip model \citep[LSM,][]{Kendall1957}.  By understanding how various waves will be produced by our sensor (P and S waves) we can potentially understand the spatial variability in $V_{P}/V_{S}$ ratios to a higher degree of certainty. We foresee that an accurate transient force-time functions of our PZT actuators will help to frequently and non-invasively update time-dependent characteristics of the acoustic emission system component, such as: changes in passive transducer responses, in the transfer media or more accurate characteristics of similarly doublet events.  
 
 \section{Theory}
 \label{theo}
 We review the methodology that will model the forces produced by an active source piezoelectric transducer.  This methodology takes advantage of the theory surrounding elastodynamic wave propagation in an elastic medium.  We build on the recent studies of signal analysis and instrument calibration by \citet{McLaksey2012} continuing this analysis using Green's function formalization \citep{Aki2002, Johnson1974}. We assume that wave propagation can be adequately described by convolution with the Green's function and that each component in our analysis can be modeled as a linear-time invariant system.  We are assuming that changes in the sensor and source behavior and material properties are unaffected over time.  We assume point representations of both the sensor and source location. This so-called ``aperture'' effect is minimized by using the point contact conical PZT crystal but some deviations might be incurred.
 
-Using the classical theory describing dynamic elasticity \citep{Aki2002}, we can use Green's functions to relate the displacement $u$ at a known location $\mathbf{x}$ and time $t$ to a force $f$ at another point $\mathbf{\xi}$ and time $\tau$, which is given as the convolution of the force with the Green's function
+Using the classical theory describing dynamic elasticity, summarize by \citet{Aki2002}, we can use Green's functions to relate the displacement $u$ at a known location $\mathbf{x}$ and time $t$ to a force $f$ at another point $\mathbf{\xi}$ and time $\tau$, which is given as the convolution of the force with the Green's function
 
 \begin{equation}
 \label{eq1}
@@ -157,7 +151,7 @@ Using the classical theory describing dynamic elasticity \citep{Aki2002}, we can
             g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right).
 \end{equation}
 
-\noindent We note that $\ast$ represents convolution in the time domain, $f$ is the force acting in the $j$ direction at location $\mathbf{\xi}$ and $g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right)$ is the elastodynamic Green's function describing the displacement $u$ in the direction $k$ at location $\mathbf{x}$.  The true Green's function describes the displacement at time $t$ and location $\mathbf{x}$ for the unit impulse force at location $\mathbf{\xi}$ at the delayed time $\tau$. 
+\noindent We note that $\ast$ represents convolution in the time domain, $f$ is the force acting in the $j$ direction at location $\mathbf{\xi}$ and $g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right)$ is the elastodynamic Green's function describing the displacement $u$ in the direction $k$ at location $\mathbf{x}$. For the elastodynamic solutions studies here, we assume that convolution $\ast$ is applicable since the system in question are linear time-invariant (LTI, as mentioned above). The true Green's function describes the displacement at time $t$ and location $\mathbf{x}$ for the unit impulse force at location $\mathbf{\xi}$ at the delayed time $\tau$. 
 
 Piezoelectric transducers measure a voltage caused by the compression of the lead zirconate titanate (PZT) crystal in the surface normal direction $s\left( \mathbf{x}, t \right)$. We can relate the true surface displacement $u_{k}$ to voltage measurement $s$ using the instrument response, which is given as
 
@@ -179,7 +173,7 @@ Piezoelectric transducers measure a voltage caused by the compression of the lea
 
 \noindent We can also use this formulation to relate the measured signals to a set of self-equilibrating forces or moments $m_{jp}$ \citep{Aki2002}. Displacements in the body are related to the spatial derivative of the elastodynamic Green's function $g_{kj,p}$.  While this is more similar to sources buried within a specimen and may be more representative of an earthquake source, this is not the focus of this study.  In this study, all sources are produced on the surface of the specimen, which justifies the use of only equation \eqref{eq2}.
 
-Our study aims at determining the nature of the source produced that occurs we use the PZT crystal as active source. WE first decompose the source into two parts as shown here:
+Our study aims at determining the nature of the source produced that occurs we use the PZT crystal as active source. We first decompose the source into two parts as shown here:
 
 \begin{equation}
     \label{eq4}
