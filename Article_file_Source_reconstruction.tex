@@ -20,6 +20,7 @@
 \usepackage{adjustbox}
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
 
 \journal{Nondestructive Testing and Evaluation}
 
@@ -52,7 +53,7 @@
 \end{abstract}
 
 \begin{keyword}
-Acoustic emissions, absolutely calibrated sensors, active source time function, empirical Green's functions
+Acoustic emissions, physical acoustics, non-destructive testing, active source methods
 \end{keyword}
 \end{frontmatter}
 
@@ -69,6 +70,11 @@ Understanding wave elastodynamic waves propagate through a medium has proven to 
 Application in material science (crack detection), biomedics (ultrasonics), \textbf{more?} 
 \\
 The premise is to use well-understood physics associated with wave propagation, in fluids or solids media, to probe properties and assess its state in a non-destructive manner. 
+
+\\\
+
+The hope is to adopt techniques that have widely been used in the field of exploration geophysics in novel laboratories acoustic emission studies. To our knowledge, the benefits seen at scale from applications such as \textit{controlled-source interferometry} have not been fully explored in the laboratory with fully calibrated PZT actuator sources. We also see potential benefits when studying changes acoustic transmissivity \citep{PyrakNolte1980} with more accurate and coupled models that the simple linear slip model \citep[LSM,][]{Kendall1957}.  By understanding how various waves will be produced by our sensor (P and S waves) we can potentially understand the spatial variability in $V_{P}/V_{S}$ ratios to a higher degree of certainty. We foresee that an accurate transient force-time functions of our PZT actuators will help to frequently and non-invasively update time-dependent characteristics of the acoustic emission system component, such as: changes in passive transducer responses, in the transfer media or more accurate characteristics of similarly doublet events.  
+
 
 
 \section{Experimental facilities}
@@ -125,11 +131,14 @@ A total of 13 sensor are used and the spectral characteristics of these sensors 
 
 The study of spherical waves in an elastic half-space was solved by \citet{Lamb1904} who was interested in the kinematic motions on a surface using the integral of plane waves solutions from \citet{Rayleigh1988}. More specifically, the Lamb's problem focuses on determining the elastic disturbance resulting from a point force in/on a half space. These early studies aimed at understanding phase arrivals and their relationship to earthquake sources in the field of seismology. These seminal investigations have been followed by many hundreds of studies that have use different mathematical approaches to solve the wave equation \citep[e.g. ch 6 in][]{Aki2002}.These studies vary in complexity in the media (in-homogeneous layered, or anisotropic, etc.), to complex source features (double couple, compensated-linear-vector-dipole, etc.) and use a range of different methods to solve (theoretical closed-form solutions, numerical methods, etc.). We adopt the approach presented by \citet{Johnson1974} that derived the complete solution to the three-dimensional Lamb’s problem derived using the Cagniard--de Hoop method. This solution is used to study the mechanical disturbances from sources in an elastic half-space and has been to a numerical generalized ray theory code by \citet{Hsu1985} \citep[see also][]{McLaskey2011, McLaskey2012, Selvadurai2019}.
 
-While more complex sources have been considered to model earthquakes, such as the single and double couple source \citet{Sato1972}, we believe the original problem studied by \citet{Lamb1904} -- elastic displacements resulting from a point force in/on a half space -- is sufficiently complex for capturing the behavior of the piezoelectric actuator depicted in Figure \ref{fig2}(a). In Figure \ref{fig2}(a), we show the cross-section A-A from Figure \ref{fig1}(b). The source is produced by pulsing the piezoelectric actuator on the top surface using the experimental facilities described in Figure \ref{fig1}. The impulsive actuation of the PZT crystal on the steel plate produces a rapid transient source causing elastodynamic stress waves to propagate outwards. In Figure \ref{fig2}, the coloured region represents a synthetic representation of the velocity wave-field and is only provided as a reference and is not representative of the source produced from the PZT actuator (which is to be determined later). For this example, we show the velocity wave-field produced from a ball drop at the same location as the PZT actuator location from numerical finite element simulations in ABAQUS. 
+While more complex sources have been considered to model earthquakes, such as the single and double couple source \citet{Sato1972}, we believe the original problem studied by \citet{Lamb1904} -- elastic displacements resulting from a point force in/on a half space -- is sufficiently complex for capturing the behavior of the piezoelectric actuator depicted in Figure \ref{fig2}(a). In Figure \ref{fig2}(a), we show the cross-section A-A from Figure \ref{fig1}(b). The source is produced by pulsing the piezoelectric actuator on the top surface using the experimental facilities described in Figure \ref{fig1}. The impulsive actuation of the PZT crystal on the steel plate produces a rapid transient source causing elastodynamic stress waves to propagate outwards. In Figure \ref{fig2}, the coloured region represents a synthetic representation of the velocity wave-field and is only provided as a reference and is not representative of the source produced from the PZT actuator (which is to be determined later). For this example, a snapshot of the velocity wave-field, produced from a capillary fracture is shown from numerical finite element simulations in ABAQUS \citep[adapted from fig. 2][]{Selvadurai2019}. 
 
-The type of source creating the stress waves is important. \citet{Breckenridge1990} states that the ideal source is infinitesimal in size, has a force-time function of a step or delta function, and generates large amplitudes. He performed important study of a variety of sources including pencil lead fracture, capillary fracture, capacitive transducer, conical transducer, ball impact, spark, and high explosive, noting that each type is imperfect and has its trade offs. In this study, we look to aim to understand the PZT actuator (similar to conical transducer) which we can leverage to non-invasively study the \textit{in situ} absolute calibration conditions inside a less accessible experimental facility (e.g. trixaial pressure cell). To model the force-time function produced conical sensor, we first simplify the sequence of events and their components that link the source to the recorded signal.
+Properties of the source creating the stress waves is important. \citet{Breckenridge1990} states that the ideal source is infinitesimal in size, has a force-time function of a step or delta function, and generates large amplitudes. He performed important study of a variety of sources including pencil lead fracture, capillary fracture, capacitive transducer, conical transducer, ball impact, spark, and high explosive, noting that each type is imperfect and has its trade offs. In this study, we look to aim to understand the PZT actuator (similar to conical transducer) which we can leverage to non-invasively study the \textit{in situ} absolute calibration conditions inside a less accessible experimental facility (e.g. trixaial pressure cell). To model the force-time function produced conical sensor, we first simplify the sequence of events and their components that link the source to the recorded signal.
 
-In Figure \ref{fig2}(a), we show the ``toolchain'' that is used to process the seismic waves produced by the PZT actuator. The PZT actuator is used to produce a force $f_{j}\left( \mathbf{\xi}, \tau \right)$ on the top surface at a point $\mathbf{\xi}$ of the steel platen. A passive sensor, on the bottom surface at point $\mathbf{x}$, attempts to measure the theoretical displacements with time $u_{k}\left( \mathbf{x}, t \right)$. Green’s functions are a basic ingredient in the Knopoff--de Hoop representation theorem \citep{Burridge1964} is the solution to the elastic wave equation relating the elastic displacements to the source throughout he elastic half-space. Unfortunately, the passive sensors are unable to truly capture the theoretical displacements and will distort the measured signal $s(t)$ according to its instrument response $i_{k}(t)$.  In this study we consider the instrument response to include effects of the sensor, cabling and internal component of the data acquisition allowing for digitization of the signal. 
+In Figure \ref{fig2}(a), we show the five components of ``toolchain'' that is used to link the source to the measured signal. The PZT actuator is used to produce a (\textit{1}) \textbf{rapid transient force} $f_{j}$ on the top surface at a point $\mathbf{\xi}$ of the steel platen at a delayed time $\tau$. Elastic stress waves propagate through the plate and the theoretical elastic displacement field throughout the body can be computed using the (\textit{2}) \textbf{Green's function} $G_{kj}$. The Green's functions map the (\textit{3})\textbf{ elastic displacements} $u_{k}$ at $\mathbf{x}$ and time $t$ from the force at $\mathbf{\xi}$ and time $\tau$. A passive sensor, on the bottom surface at point $\mathbf{x}$ and attempts to measure the theoretical displacements $u_{k}$. Unfortunately, the passive sensors always will distort the (\textit{4}) \textbf{measured signal}  $s$ according to its (\textit{5}) \textbf{instrument response} $i_{k}$ at position $\mathbf{x}$ and time $t$.
+
+
+developing more understanding of realistic force-time function produced by the PZT actuators has many potential benefits. Due to these properties we are able simply study and isolate individual components of the ``toolchain''. 
 
 \begin{figure}[h]
      	\centering
@@ -138,15 +147,13 @@ In Figure \ref{fig2}(a), we show the ``toolchain'' that is used to process the s
 	\label{fig2} 
 \end{figure}
 
-Due to spatial reciprocity of the representation theorem \citep{Aki2002} and the invariant nature of the seismic wave equation to time-reversed solutions \citep{Fink1992}, developing more understanding of realistic force-time function produced by the PZT actuators has many potential benefits. The hope is to adopt techniques that have widely been used in the field of exploration geophysics in novel laboratories acoustic emission studies. To our knowledge, the benefits seen at scale from applications such as \textit{controlled-source interferometry} have not been fully explored in the laboratory with fully calibrated PZT actuator sources. We also see potential benefits when studying changes acoustic transmissivity \citep{PyrakNolte1980} with more accurate and coupled models that the simple linear slip model \citep[LSM,][]{Kendall1957}.  By understanding how various waves will be produced by our sensor (P and S waves) we can potentially understand the spatial variability in $V_{P}/V_{S}$ ratios to a higher degree of certainty. We foresee that an accurate transient force-time functions of our PZT actuators will help to frequently and non-invasively update time-dependent characteristics of the acoustic emission system component, such as: changes in passive transducer responses, in the transfer media or more accurate characteristics of similarly doublet events.  
 
-\section{Theory}
+\section{Theoretical Framework}
 \label{theo}
 
+We build on the recent studies of signal analysis and instrument calibration by \citet{McLaksey2012} continuing this analysis using Green's function formalization \citep{Aki2002, Johnson1974}. Due to spatial reciprocity of the representation theorem \citep{Aki2002} and the invariant nature of the seismic wave equation to time-reversed solutions \citep{Fink1992}, we can use convolution of the components highlighted in Figure \ref{fig2} to analyze our system in a linear time-invariant (LTI) fashion. This assumes that changes in the sensor and source behavior and material properties are unaffected over time.  We assume point representations of both the sensor and source location, which might be influenced so-called ``aperture'' effect. However, this is minimized by using the point contact conical PZT crystal, which will be discussed later when we examine in more detail how the force systems of passive and active PZT sensors.
 
-We review the methodology that will model the forces produced by an active source piezoelectric transducer.  This methodology takes advantage of the theory surrounding elastodynamic wave propagation in an elastic medium.  We build on the recent studies of signal analysis and instrument calibration by \citet{McLaksey2012} continuing this analysis using Green's function formalization \citep{Aki2002, Johnson1974}. We assume that wave propagation can be adequately described by convolution with the Green's function and that each component in our analysis can be modeled as a linear-time invariant system.  We are assuming that changes in the sensor and source behavior and material properties are unaffected over time.  We assume point representations of both the sensor and source location. This so-called ``aperture'' effect is minimized by using the point contact conical PZT crystal but some deviations might be incurred.
-
-Using the classical theory describing dynamic elasticity, summarize by \citet{Aki2002}, we can use Green's functions to relate the displacement $u$ at a known location $\mathbf{x}$ and time $t$ to a force $f$ at another point $\mathbf{\xi}$ and time $\tau$, which is given as the convolution of the force with the Green's function
+Using the classical theory describing dynamic elasticity \citep{Aki2002}, we can use Green's functions to relate the displacement $u$ at a known location $\mathbf{x}$ and time $t$ to a force $f$ at another point $\mathbf{\xi}$ and time $\tau$. This is given as the convolution of the force with the Green's function
 
 \begin{equation}
 \label{eq1}
@@ -154,37 +161,58 @@ Using the classical theory describing dynamic elasticity, summarize by \citet{Ak
             f_{j}\left( \mathbf{\xi}, \tau \right) \ast 
             g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right).
 \end{equation}
-
-\noindent We note that $\ast$ represents convolution in the time domain, $f$ is the force acting in the $j$ direction at location $\mathbf{\xi}$ and $g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right)$ is the elastodynamic Green's function describing the displacement $u$ in the direction $k$ at location $\mathbf{x}$. For the elastodynamic solutions studies here, we assume that convolution $\ast$ is applicable since the system in question are linear time-invariant (LTI, as mentioned above). The true Green's function describes the displacement at time $t$ and location $\mathbf{x}$ for the unit impulse force at location $\mathbf{\xi}$ at the delayed time $\tau$. 
+\noindent We note that $\ast$ represents convolution in the time domain, $f$ is the force acting in the $j$ direction at location $\mathbf{\xi}$ and $g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right)$ is the elastodynamic Green's function describing the displacement $u$ in the direction $k$ at location $\mathbf{x}$. For the elastodynamic solutions studied here, we assume that convolution $\ast$ is applicable since the system in question are linear time-invariant (LTI) and that convolution has commutativity, associative and distributive properties. The true Green's function is the displacement field for the unit impulse force $\delta_{j}$ or the identity convolution. 
 
 Piezoelectric transducers measure a voltage caused by the compression of the lead zirconate titanate (PZT) crystal in the surface normal direction $s\left( \mathbf{x}, t \right)$. We can relate the true surface displacement $u_{k}$ to voltage measurement $s$ using the instrument response, which is given as
-
-    \begin{equation}
+   \begin{equation}
     \label{eq2}
         s\left( \mathbf{x}, t \right) =
-            u_{k}\left( \mathbf{x}, t \right) \ast i_{k}\left(t \right).
+            u_{k}\left( \mathbf{x}, t \right) \ast i_{k}\left(\mathbf{x},t \right).
     \end{equation}
-
-\noindent Combining \eqref{eq1} and \eqref{eq2}, we can represent the measured voltage to the forces which produced them:
+    \noindent Combining \eqref{eq1} and \eqref{eq2}, we can represent the measured voltage to the forces which produced them:
 
     \begin{equation}
     \label{eq3}
         s\left( \mathbf{x}, t \right) =
-            u_{k}\left( \mathbf{x}, t \right) \ast i_{k}\left(t \right) =  
+            u_{k}\left( \mathbf{x}, t \right) \ast i_{k}\left(\mathbf{x}, t \right) =  
                 f_{j}\left( \mathbf{\xi}, \tau \right) \ast 
-                g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right) \ast i_{k}\left( t \right).
+                g_{kj}\left( \mathbf{x}, t;\mathbf{\xi}, \tau \right) \ast i_{k}\left(\mathbf{x},  t \right).
     \end{equation}
 
 \noindent We can also use this formulation to relate the measured signals to a set of self-equilibrating forces or moments $m_{jp}$ \citep{Aki2002}. Displacements in the body are related to the spatial derivative of the elastodynamic Green's function $g_{kj,p}$.  While this is more similar to sources buried within a specimen and may be more representative of an earthquake source, this is not the focus of this study.  In this study, all sources are produced on the surface of the specimen, which justifies the use of only equation \eqref{eq2}.
 
-Our study aims at determining the nature of the source produced that occurs we use the PZT crystal as active source. We first decompose the source into two parts as shown here:
+\subsection{Time domain characteristics of the Force Function}
+\label{force_time}
+
+Our study aims at determining the nature of the dynamic transient source produced from the PZT actuator. We first decompose the source into two parts as shown here:
 
 \begin{equation}
     \label{eq4}
-    f_{j}\left( \mathbf{\xi}, \tau \right) = f^{*}_{j}\left( \mathbf{\xi}, \tau \right)  \ast \kappa \left( \tau \right),
+    f_{j}\left( \mathbf{\xi}, \tau \right) =A_{0} \cdot f^{*}_{j}\left( \mathbf{\xi}, \tau \right) ,
 \end{equation}
 
-\noindent where $f^{*}_{j}$ is the normalized force-time function that has units (N) and a general shape to that follows the electro-mechanical behavior of the coupled high-voltage discharge and sensor systems.  A unitless scaling factor $\kappa$ will be used to scale the normalized force time-function $f^{*}$ to the true force-time function $f$ and likely varies with the time as the electrical pulse is applied to the active source.
+\noindent where $f^{*}_{j}$ is the normalized force-time function that has units (N) and a general shape to that follows the electro-mechanical behavior of the coupled high-voltage discharge and sensor systems.  A unitless scaling factor $\kappa(\tau)$ will be used to scale the normalized force time-function $f^{*}$ to the true force-time function $f$ and likely varies with the time as the electrical pulse is applied to the active source.
+
+\begin{figure}[ht]
+     	\centering
+\includegraphics[scale= 0.9]{FIG2b.pdf} 
+\caption{\textbf{(a)} Enhanced view of the contact region from the concial PZT actuator. \textbf{(b)} Simplified schematic showing the electro-mechanical systems and the estimate region where a pressure pulse $p_{j}$ (red) is generated when excited by the impulsive voltage. We assume that the force-time $f_{j}$ (blue arrow) is simply the integration of transient pressure over a constant circular contact area $A_{contact}$ and acting only in the 3-direction.  \textbf{(c)} Model summarizing the complex behavior of the PZT actuator (both internal and external) using an under-damped spring-mass damper systems whose behavior follow equation \eqref{eq4b}. \textbf{(d)} The normalized force-time function for: $A_{0}$ = 1 N, $\Gamma$ = 0 MHz and $\Lambda$ = 4.7 MHz (black line) and $A_{0}$ = 1 N, $\Gamma$ = 0.7 MHz and $\Lambda$ = 4.7 MHz (blue line).}
+	\label{fig2b} 
+\end{figure}
+
+In Figure \ref{fig2b}(a) we look in detail at the position where the PZT actuator contacts steel plate. The actuator has threads on its body and is loaded on the plate by applying a small torque where the conical PZT tip is loaded through a thin layer of nickel (0.03 mm thick). This nickel foil is the cathode of the electro-mechanical circuit shown in Figure \ref{fig2b}(b), which represent a more detailed representation of the PZT actuator mentioned in the driver circuit (see Figure \ref{fig1}(c)). A small amount of contact gel is used to improve contact between the nickel cathode and steel plate but nickel was chosen due to is malleability and it formed a strong contact with the steel platen under minimal pressure \citep{Glaser1998}. To better understand the transient point force $f_{j}$ applied, we consulted literature in the biomedical industry that has studied piezomaterial, with similar pulsed excitation voltages, to perform ultrasonic reconstruction in acoustic media.  \citet{Christensen1988} looked at the pressure caused by a an electrical circuit that generated a sharp voltage pulse similar to that shown in Figure \ref{fig1}(d). Since the propagate waves through an acoustic medium they are interested in the time-dependent pressure boundary condition $p_{j}(\tau)$. To convert from pressure (over the tip area of the conical PZT) to an equivalent force $f_{j}$ we assume that the transient pressure field produced was uniform and therefore integrate over the contact tip area $A_{contact} = \pi r_{contact}^{2}$. For this PZT sensor the conical crystal has a contact radius of $r_{contact} = $ 0.75 mm. \cite{Christensen1988} found that the transient response of the pressure did not precisely duplicate the waveform of the voltage (see Figure \ref{fig1}(b)) due to the resonant properties of the crystal. When excited by a impulsive source, the crystal will resonate sinusoidal at its fundamental frequency and the wave will decay based in internal, external and transmitted losses.  The PZT actuator, when excited by the impulse, will produce a normalized pressure (or force-time function) described by the under-damped spring-mass damper system shown in Figure \ref{fig2b](c). \citet{Breckenridge1990} also showed evidence of under-damped behavior when exciting a conical PZT on an aluminium plate.
+
+\citet{Christensen1988} notes that the damping of the pressure will be inversely proportional to the mechanical loss factor of the PZT crystal, but we argue that more variables might be contributing to this of the coupling of all the internal component such as the backing mass material and shape, they connections between the internal electrically conductive components, the shape of the crystal, the type of potting agent, the amount of coupling gel used, the type of material being pulsed (fluid or elastic), amongst other features \citep{Glaser1998}.  We argue that attempting to solve the full systems behavior with all these complexities is counter productive to the crux of this study. By the properties of convolution describing the wave propagation in equations \eqref{eq1}, we can assume that the measured signals will still have the general shape of the normalized force-time $f^{*}$ embedded in the measurements. We generalized the normalized force time function shown in Figure \ref{fig2b}(d) as follows
+
+\begin{equation}
+    \label{eq4b}
+   f(t) = A_{0} \cdot exp[- \Gamma \cdot t]\cdot sin(\Lambda\cdot t) ,
+\end{equation}
+
+\noindent where $A_{0}$ = 1 N for the normalized case, $\Gamma$ and $\Lambda$ are the decay and vibration parameters of the normalized force-time function. We note that the subscript $_{j}$ has disappears since we are assuming that the normalized force is acting only in the $`3'$-direction. Later, we will describe how these two parameters are used in an inversion to minimize the errors between the theoretical displacements $u_{k}$ and measured signals $s$ over all the measured sensors. For the case in Figure \ref{fig2b}(d), $\Gamma$ = 0.7 MHz and $\Lambda$ = 4.7 MHz, which represented the best-fit solution for our analysis of the specific PZT used in this study following the excitation pulse in Figure \ref{fig1}(d).
+
+
+\subsection{Calculating the Instrument Response}
 
 We use properties of the Fourier transform \citep{Bracewell1986} to help deconvolve equations \eqref{eq3} and \eqref{eq4}.  In the frequency domain, convolution and deconvolution simply becomes multiplication and division. This allows us to isolate the components of interest we wish to quantify for our analysis. An example of the instrument response in the frequency domain $I_{w}$ simplifies to:
 
@@ -194,43 +222,76 @@ We use properties of the Fourier transform \citep{Bracewell1986} to help deconvo
         S\left( \mathbf{x}, \omega \right) \cdot \left[ F_{j}\left( \mathbf{\xi}, \hat{\omega} \right) \cdot G_{kj}\left( \mathbf{x}, \omega; \mathbf{\xi}, \hat{\omega} \right)\right]^{-1} .
 \end{equation}
 
-\noindent where $I_{k}$, $S$, $F_{j}$ and $G_{kj}$ are calculated from the temporal Fourier transforms of the $i_{k}$, $s$, $f_{j}$ and $g_{kj}$, respectively.  As we will see in Section \ref{XXX}, instrument responses was calculated for the sensor array shown in Figure \ref{fig1}, where a controlled force-time function were applied at the central location by dropping small steel balls of different diameters onto the surface from a known height. According to Hertzian contact theory, it is possible to assume a source time function that is a function of the material properties of the ball and steel platen ($E, \nu, \rho$), the radius of ball, and the drop height. This method has been popularized over the recent years due to a highly reliable and repeatable force-time function $f$ produced from ball impact and the ability to absolutely calibrate the acoustic emission sensors over a wide spectral range \citep{McLaskey2010, McLaskey2012, McLaskey2015}.
+\noindent where $I_{k}$, $S$, $F_{j}$ and $G_{kj}$ are calculated from the temporal Fourier transforms of the $i_{k}$, $s$, $f_{j}$ and $g_{kj}$, respectively.  In a concerted study, we have predetermined the instrument responses for the exact same sensor configuration shown in Figure \ref{fig1}.  However, \citet{Wu2020} produced a known force-time function by dropping small steel balls of different diameters onto the surface from a known height at the identical location that will be used for the PZT actuator later. According to Hertzian contact theory, it is possible to assume a source time function that is a function of the material properties of the ball and steel platen ($E, \nu, \rho$), the radius of ball, and the drop height. This method has been popularized over the recent years due to a highly reliable and repeatable force-time function $f$ produced from ball impact and the ability to absolutely calibrate the acoustic emission sensors over a wide spectral range \citep{Breckenridge1990, McLaskey2010, McLaskey2012, McLaskey2015}. 
 
-We will use the known instrument response to better understand the source produced from the active PZT transducer.  We can rearrange equation \eqref{eq5} to obtain the true force in the frequency domain:
+For the identical configuration of sensors shown in Figure \ref{fig1}(b), \citet{Wu2020} has dropped a range of small stainless steel (404) balls with diameters ranging from $d_{ball}$ = 0.3, 0.35, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0, 1.5, 2.0 and 2.5 mm. The balls had elastic modulii of $E_{ball}$ = 210 GPa and Poisson ratio of $\nu_{ball}$ = 0.303, which allow them to calcaute the specific force-time function from Hertzian contact theory \citep[see also e.g.][]{McLaskey2010, McLaskey2012}. Once the force-time function is know, we use equation \eqref{eq5}, now with $F_{ball}\left( \mathbf{\xi}, \hat{\omega} \right)$, which represents the Fourier transform of the ball drop, to calculate the broadband instrument response $I_{k}(\omega)$ from 1 kHz to 1 MHz.  Calculating the lower frequency instrument response (i.e. 1 kHz to 50 kHz ) is not straightforward and the readers should also consult \citet{Wu2018} for a summary of methods. Figure \ref{fig6}(a) shows the full instrument response for all the passive sensors shown in Figure \ref{fig1}(b). The color coding related to the sensors epicentral distance from the ball drop source. In this study, we are only interested in the higher frequency (100 kHz to 1 MHz) sensor behavior for the reconstruction of the PZT actuator force time function. This range is shown in Figure \ref{fig6}(b). We see that the instrument response is insensitive to the take-off angle. This is important to the analysis and will be addressed in the more detail later. This insensitivity has also been acknowledged in the past for the same KRNPC-BB conical-style sensors used here \citep{Goodfellow2015, Selvadurai2019}.  Results from this calibration campaign are summarized and more details have been given in \citet{Wu2020}.
+
+
+\begin{figure}[ht]
+     	\centering
+\includegraphics[scale= 1.0]{FIG6.pdf} 
+\caption{Summary of the calibration experiments performed by \citet{Wu2020} to determine the instrument response for ball drops, performed \textit{a priori}, in the same location as where our PZT actuator was later placed. \textbf{(a)} The full range of calibrated frequencies (1 kHz to 1 MHz) is shown. \textbf{(b)} For our study, we only consider high-frequency aspect and therefore will only use the instrument responses between components 100 kHz to 1 MHz.  Colors are indicative of the sensors location as defined in Figure \ref{fig1}(b). For all the details please consult \citet{Wu2020}. }
+	\label{fig6} 
+\end{figure}
+
+\subsection{Spectral Deconvolution of the Problem}
+
+Having the specific broadband instrument response, solved using the well-understood ball drop source for our exact sensor-source layout, is paramount to accurately model the force-time function of the PZT actuator described by equation \eqref{eq4b}.   If we now consider the original problem in Figure \ref{fig2}, we can start with the recorded signal produced from the PZT actuator and use the instrument response to determined the mechanical vibration.  In the Fourier domain, we can rearrange the left hand side of equation \eqref{eq3} to estimate the spectral response of the theoretical vibration $U_{k}(\mathbf{x},t)$ caused by the transient PZT actuator:
 
 \begin{equation}
     \label{eq6}
 \begin{split}
-F_{j}\left( \mathbf{\xi}, \hat{\omega} \right) & = 
-        S\left( \mathbf{x}, \omega \right) \cdot \left[ I_{k}\left(\omega \right) \cdot G_{kj}\left( \mathbf{x}, \omega; \mathbf{\xi}, \hat{\omega} \right)\right]^{-1}, \\
+U_{k}\left( \mathbf{x}, \omega \right) & = 
+        \frac{S\left( \mathbf{x}, \omega \right) }{ I_{k}\left( \mathbf{x},\omega \right)}.
 \end{split}
 \end{equation}
 
-\noindent where by combing the Fourier transform of equation \eqref{eq4} we obtain an expression for the normalized force-time function,
+Approaching the problem from the source side (right hand side of equation \eqref{eq3}), we can also estimate the mechanical vibration caused by the force of the PZT actuator convolved with the Green's function solution, which in the Fourier domain is shown as:
 
 \begin{equation}
-    \label{eq7}
+    \label{eq6a}
 \begin{split}
-F^{*}_{j}\left( \mathbf{\xi}, \hat{\omega} \right) & = 
-        S\left( \mathbf{x}, \omega \right) \cdot \left[ K\left(\hat{\omega}\right) \cdot I_{k}\left(\omega \right) \cdot G_{kj}\left( \mathbf{x}, \omega; \mathbf{\xi}, \hat{\omega} \right)\right]^{-1}.\\     
+U_{k}\left( \mathbf{x}, \omega \right) & = 
+       F_{j}\left( \mathbf{\xi}, \hat{\omega} \right)  \cdot G_{kj}\left(  \mathbf{x}, \omega; \mathbf{\xi}, \hat{\omega}\right).
 \end{split}
 \end{equation}
 
-\noindent To solve the features about $F^{*}_{j}$, we will need to \textit{a priori} knowledge of sensors instrument response, also needed will be signal measurements $S$ and the true Green's function $G_{kj}$ but we will still not know the frequency-dependent scaling function $K(\hat{\omega})$ -- a primary calculation that is required to obtain the true force-time function produced by the active PZT transducer.
+\noindent Substituting the Fourier transform of the force-time function describe in equation \eqef{eq4}, we obtain
+
+\begin{equation}
+    \label{eq6b}
+\begin{split}
+U_{k}\left( \mathbf{x}, \omega \right) & = 
+       A_{0}\cdot \delta (\omega)\cdot F^{*}_{j}\left( \mathbf{\xi}, \hat{\omega} \right)  \cdot G_{kj}\left(  \mathbf{x}, \omega; \mathbf{\xi}, \hat{\omega}\right),
+\end{split}
+\end{equation}
+
+\noindent where the Fourier transform of the scaling parameter is $\mathcal{F}[A_{0}] = A_{0}\cdot\delta(\omega)$ and $\delta$ is the Dirac delta function.  Next we can combine equations \eqref{eq6} and \eqref{eq6b} to solve for the scaling factor for the force-time function $A_{0}$:
+
+
+\begin{equation}
+    \label{eq6b}
+\begin{split}
+A_{0} = \mathcal{F} ^{-1}[A_{0}\cdot \delta (\omega)] & = \frac{S\left( \mathbf{x}, \omega \right) } 
+{ I_{k}\left( \mathbf{x},\omega \right)\cdot F^{*}_{j}\left( \mathbf{\xi}, \hat{\omega} \right)  \cdot G_{kj}\left(  \mathbf{x}, \omega; \mathbf{\xi}, \hat{\omega}\right)},
+\end{split}
+\end{equation}
+
+\noindent where $\mathcal{F}^{-1}[\cdot]$  is the inverse Fourier transform. We see that all of the components on the right hand side can be measured ($S$) or calculated ($G_{kj}$) or have been determined \textit{a priori} ($I_{k}$) . We must assume that $A_{0}$ is constant over time and and the force-time function $f(\mathbf{\xi}, \tau)$, in equation \eqref{eq4b}, accurately captures the force released during the impulsive excitation of the PZT actuator. 
 
 \section{Results}
 \label{results}
 
-In Figure \ref{fig3}(a) we show measurements on all passive sensors PZT sensors depicted in Figure \ref{fig1}(b).  Waveforms have been color coded following Figure \ref{fig1}(b) to show measurements taken at similar epicentral distances. These waveform we produced by actively exciting the source sensor located at the top central location of the steel platen. For our analysis, we only the first 50 $\mu$s of signal since we do not want to pollute the data with reflections from the boundary of the platen.  This allows us to analyze the wave using the approximation that the plate is in fact semi-infinite. Under this assumption we are able to solve for the Green's functions using the generalized ray theory code provided by \citet{Hsu1985} and modified for MATLAB by \citet{McLaskey2012}.  Figure \ref{fig3}(b) shows the empirical Green's functions (EGF) at a give epicentral location from the source. We call this the empirical Green's function since it is a numerical approximation of the true Green's function that is the resulting ground displacements $u$ at point $\mathbf{x}$ from a unit impulse function $\delta_{j}(\mathbf{\xi}, \tau)$. In Figure \ref{fig3}(b) we also show the wave phase arrivals (P, S, PPP, PPPPP) for the numerical models.
+In Figure \ref{fig3}(a) we show measurements on all passive sensors PZT sensors depicted in Figure \ref{fig1}(b).  Waveforms have been color coded following Figure \ref{fig1}(b) to show measurements taken at similar epicentral distances. These waveform we produced by actively exciting the source sensor located at the top central location of the steel platen. For our analysis, we only the first 50 $\mu$s of signal since we do not want to pollute the data with reflections from the boundary of the platen.  This allows us to analyze the wave using the approximation that the plate is in fact semi-infinite. Under this assumption we are able to solve for the Green's functions using the generalized ray theory code provided by \citet{Hsu1985} and modified for MATLAB by \citet{McLaskey2012}.  Figure \ref{fig3}(b) shows the Green's functions (EGF) at a give epicentral location from the source. We call this the empirical Green's function since it is a numerical approximation of the true Green's function that is the resulting ground displacements $u$ at point $\mathbf{x}$ from a unit impulse function $\delta_{j}(\mathbf{\xi}, \tau)$. In Figure \ref{fig3}(b) we also show the wave phase arrivals (P, S, PPP, PPPPP) for the numerical models.
 
 \begin{figure}[ht]
      	\centering
 \includegraphics[scale= 1.0]{FIG3.pdf} 
-\caption{\textbf{(a)} Measurements on from passive PZT transducers from a source produced from the active sensor. The color scheme represents sensors at the different epicentral locations shown in Figure \ref{fig1}(b).  \textbf{(b)} Green's function solutions using generalized ray theory for a semi-infinite elastic, homogeneous steel platen at different epicentral locations.  The empirical Green's function (EGF) is equal to the true Green's function represents the displacements produced from the unit impulse force $\delta_{j}(\tau)$. We see the various phase arrival predicted from the model.}
+\caption{\textbf{(a)} Measurements the array of passive PZT transducers from a PZT actuator source described in Figure \ref{fig1}(d). The color scheme represents the different epicentral locations of each sensor in Figure \ref{fig1}(b).  \textbf{(b)} Green's function solutions using generalized ray theory for a semi-infinite elastic, homogeneous steel plate at different epicentral locations.  The empirical Green's function (EGF) is the numerical estimate of the true Green's function, which is displacements produced from the unit impulse force $\delta_{j}(\mathbf{\xi}, \tau)$. We see the various phase arrival predicted from the model.}
 	\label{fig3} 
 \end{figure}
 
-Figure \ref{fig4} compares the theoretical Green's function $g_{kj}$ to the measured signals $s$.  We show the sensors A1 (red), A2 (yellow), A3 (green) and A4 (blue) from the epicentral distances of 0 mm, 23 mm, 46 mm and 69 mm, respectively. We see that the sensors appear to capture the multiple phase arrivals and this is believed to be due to the conical nature of the PZT crystal and its ability to capture wave arrivals at high azimuthal incident angles \citep{Selvadurai2019}. Results in Figure \ref{fig4} are representative of the measurements across all 13 passive sensors.
+Figure \ref{fig4} compares the theoretical Green's function $g_{kj}$ to the measured signals $s$.  For clarity, we only show the sensors A1 (red), A2 (yellow), A3 (green) and A4 (blue) from the epicentral distances of 0 mm, 23 mm, 46 mm and 69 mm, respectively. We see that the sensors appear to capture the multiple phase arrivals and this is believed to be due to the conical nature of the PZT crystal and its ability to capture wave arrivals at high azimuthal incident angles \citep{Selvadurai2019}. Results in Figure \ref{fig4} are representative of the measurements across all 13 passive sensors.
 
 \begin{figure}[ht]
      	\centering
@@ -248,24 +309,12 @@ To best show the approach we take to solve for the force time function produced 
 	\label{fig5} 
 \end{figure}
 
-\textbf{**Use Christensen (1988) to better define the force-time function**} We created the normalized force-time function based on characteristic of the first arrival P wave.  In Figure \ref{fig5}(c) we show the methodology for generating $f^{*}_{j}$.  We based this on the technical specifications of the high-voltage pulsing unit described in Section \ref{XXX}. In this experiment we applied a 100V pulse, which translates into a positive pulse, followed by a delay, then a negative pulse.  We approximated this behavior using piecewise discontinuous step functions (red curve) that was convolved with a 0.6 $\mu$s triangle function to smoothen the step function. This produced the blue curve which matched the general shape of the P wave arrival in Figure \ref{fig5}(c).  We will use this as a forward model to approximate the source-time from the active PZT source. We clearly see that the normalized force-time function varies from [-1,1], which is appropriate for our definition of $f^{*}$ in Section \ref{XXX}.
+ We created the normalized force-time function based on characteristic of the first arrival P wave.  In Figure \ref{fig5}(c) we show the methodology for generating $f^{*}_{j}$.  We based this on the technical specifications of the high-voltage pulsing unit described in Section \ref{XXX}. In this experiment we applied a 100V pulse, which translates into a positive pulse, followed by a delay, then a negative pulse.  We approximated this behavior using piecewise discontinuous step functions (red curve) that was convolved with a 0.6 $\mu$s triangle function to smoothen the step function. This produced the blue curve which matched the general shape of the P wave arrival in Figure \ref{fig5}(c).  We will use this as a forward model to approximate the source-time from the active PZT source. We clearly see that the normalized force-time function varies from [-1,1], which is appropriate for our definition of $f^{*}$ in Section \ref{XXX}.
 
-\begin{figure}[ht]
-     	\centering
-\includegraphics[scale= 0.9]{FIG5b.pdf} 
-\caption{\textbf{(a)}  }
-	\label{fig6} 
-\end{figure}
+
 
 To solve for the scaling function $K(\hat{\omega})$ we need to know the instrument response function $i(t)$. For this study, we use the results from \citet{Wu2020}. They performed multiple ball drops to create known force-time functions at the same location as the active sensors. The same sensors were used in their study and a series of different ball sizes where used (diameters = 0.3 mm, .....to 1.5 mm).  \citet{Wu2020} modeled long times to also capture how the sensors responded to frequencies as low as $f$ =1 kHz, following the methodology by \citet{Wu2018}.  Figure \ref{fig6}(a) shows the full instrument response function for each sensor in the Fourier domain (see equation \ref{eq5}).  Figure \ref{fig6}(b) focuses only on the results for frequencies between $f$ = 100 kHz to 1000 kHz, which is more important to our understanding of the true force-time function in our case.  
 
-
-\begin{figure}[ht]
-     	\centering
-\includegraphics[scale= 0.9]{FIG6.pdf} 
-\caption{\textbf{(a)}  }
-	\label{fig6} 
-\end{figure}
 
 
 \begin{figure}[ht]
